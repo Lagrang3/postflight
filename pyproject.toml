@@ -1,0 +1,19 @@
+[project]
+name = "postfly"
+version = "0.1.0"
+description = "postfly: burn Walksnail Avatar .osd overlays onto MP4 video"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "av==17.1.0",
+    "pillow==12.3.0",
+]
+
+[project.scripts]
+postfly = "postfly:main"
+
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["postfly"]
