@@ -1,11 +1,11 @@
-# postfly
+# postflight
 
-**postfly** burns the flight-controller OSD recorded by Walksnail Avatar goggles
+**postflight** burns the flight-controller OSD recorded by Walksnail Avatar goggles
 (`.osd`) into an MP4. The script keeps the original video frame timestamps,
 including the long gaps/freezes that Walksnail DVRs sometimes contain.
 
-`uv sync --locked` installs the `postfly` command; everything in this directory
-is the postfly project.
+`uv sync --locked` installs the `postflight` command; everything in this directory
+is the postflight project.
 
 ## Requirements
 
@@ -29,32 +29,32 @@ Dependencies are pinned in `pyproject.toml` and fully resolved in `uv.lock`:
 
 ## Quick start
 
-Clone the repository and run postfly from the `recording/` directory:
+Clone the repository and run postflight from the `recording/` directory:
 
 ```bash
 cd recording
 uv sync --locked
-uv run --locked postfly AvatarG0005.mp4
+uv run --locked postflight AvatarG0005.mp4
 ```
 
 This writes `AvatarG0005_osd.mp4`.
 
 `uv sync --locked` installs the project into `recording/.venv/` and puts the
-`postfly` command in that environment. `--locked` makes uv fail rather than
+`postflight` command in that environment. `--locked` makes uv fail rather than
 modify `uv.lock`, so you always get the tested dependency set.
 
 Equivalent ways to run the same command:
 
 ```bash
-# activation-based (then plain `postfly …` works)
+# activation-based (then plain `postflight …` works)
 source .venv/bin/activate
-postfly AvatarG0005.mp4
+postflight AvatarG0005.mp4
 
 # without activating, or without `uv sync` (creates/updates .venv on demand)
-uv run --locked postfly AvatarG0005.mp4
+uv run --locked postflight AvatarG0005.mp4
 
 # run the module directly
-uv run --locked python postfly.py AvatarG0005.mp4
+uv run --locked python postflight.py AvatarG0005.mp4
 ```
 
 ## Preview a frame
@@ -62,7 +62,7 @@ uv run --locked python postfly.py AvatarG0005.mp4
 Render one composited frame without encoding the whole video:
 
 ```bash
-uv run --locked postfly AvatarG0005.mp4 --preview 30
+uv run --locked postflight AvatarG0005.mp4 --preview 30
 ```
 
 This writes `AvatarG0005_preview_30.000.png`. The 30-second frame shows the
@@ -88,14 +88,14 @@ Examples:
 
 ```bash
 # Replace an existing render with higher quality
-uv run --locked postfly AvatarG0005.mp4 --overwrite --crf 14
+uv run --locked postflight AvatarG0005.mp4 --overwrite --crf 14
 
 # Use a custom font (PNG or the official userfont.zip)
-uv run --locked postfly AvatarG0005.mp4 \
+uv run --locked postflight AvatarG0005.mp4 \
     --font /path/to/WS_BFx4_Europa_24.png
 
 # Render faster at lower quality
-uv run --locked postfly AvatarG0005.mp4 \
+uv run --locked postflight AvatarG0005.mp4 \
     --preset ultrafast --crf 24 -o test.mp4
 ```
 
@@ -154,7 +154,7 @@ uv run --locked postfly AvatarG0005.mp4 \
 
 **`Error: output already exists`** — add `--overwrite`.
 
-**`PyAV is required`** — run through uv (`uv run --locked postfly …`), not the
+**`PyAV is required`** — run through uv (`uv run --locked postflight …`), not the
 system `python3`; `uv sync --locked` installs the locked environment.
 
 **`could not download the OSD font`** — this should only happen if the bundled

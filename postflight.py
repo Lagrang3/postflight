@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""postfly: burn a Walksnail Avatar .osd overlay onto an MP4 video.
+"""postflight: burn a Walksnail Avatar .osd overlay onto an MP4 video.
 
 The goggles record the flight-controller OSD as a ``.osd`` file next to the
 video.  This script renders that OSD and burns it into a new MP4, keeping the
@@ -10,10 +10,10 @@ Requirements:
     # or: pip install av pillow
 
 Usage:
-    uv run --locked postfly AvatarG0005.mp4
-    uv run --locked postfly AvatarG0005.mp4 \
+    uv run --locked postflight AvatarG0005.mp4
+    uv run --locked postflight AvatarG0005.mp4 \
         --font WS_BFx4_Europa_24.png -o out.mp4
-    # equivalently: uv run --locked python postfly.py ...
+    # equivalently: uv run --locked python postflight.py ...
 """
 
 from __future__ import annotations
@@ -622,7 +622,7 @@ def _encode(
 
 def _build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        description="postfly: burn a Walksnail Avatar .osd overlay onto an MP4 video.",
+        description="postflight: burn a Walksnail Avatar .osd overlay onto an MP4 video.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("video", type=Path, help="input MP4 video")
